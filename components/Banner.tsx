@@ -34,6 +34,7 @@ const Banner = ({ netflixOriginals }: Props) => {
           src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
           objectFit="cover"
         />
+        <div className="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-gray-900 to-[#010511]/2"></div>
       </div>
 
       <h1 className="text-2xl font-bold md:text-3xl lg:text-6xl">

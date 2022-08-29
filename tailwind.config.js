@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -12,6 +13,11 @@ module.exports = {
       backgroundImage: {
         "gradient-to-bottom":
           "linear-gradient(to bottom,rgba(20,20,20,0) 0,rgba(20,20,20,.15) 15%,rgba(20,20,20,.35) 29%,rgba(20,20,20,.58) 44%,#141414 68%,#141414 100%);",
+      },
+      fontFamily: {
+        sans: ["Urbanist", ...defaultTheme.fontFamily.sans],
+        pop: ["Poppins"],
+        mont: ["Montserrat"],
       },
     },
   },

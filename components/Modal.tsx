@@ -97,7 +97,7 @@ const Modal = () => {
       await deleteDoc(
         doc(db, "customers", user?.uid!, "myList", movie?.id.toString())
       );
-      toast(
+      toast.error(
         `${
           movie?.title || movie?.original_name
         } has been removed from My List.`,
@@ -108,7 +108,7 @@ const Modal = () => {
         doc(db, "customers", user?.uid!, "myList", movie?.id.toString()),
         { ...movie }
       );
-      toast(
+      toast.success(
         `${movie?.title || movie?.original_name} has been added to My List.`,
         { duration: 5000, style: toastStyle }
       );
@@ -174,7 +174,7 @@ const Modal = () => {
           <div className="space-y-6 text-lg">
             <div className="flex items-center space-x-2 text-sm">
               <p className="font-semibold text-green-400">
-                {movie!.vote_average * 10}% Match
+                {Math.round(movie!.vote_average) * 10}% Match
               </p>
               <p className="font-light">
                 {movie?.release_date || movie?.first_air_date}
