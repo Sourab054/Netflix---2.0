@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply min-h-screen;
+  }
   body {
-    @apply bg-[#141414] font-mont text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
+    @apply bg-[#010511] min-h-screen font-mont text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
   }
 
   header {

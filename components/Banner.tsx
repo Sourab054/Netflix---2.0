@@ -11,14 +11,14 @@ interface Props {
   netflixOriginals: Movie[];
 }
 
+export function truncate(str: String, n: number) {
+  return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+}
+
 const Banner = ({ netflixOriginals }: Props) => {
   const [movie, setMovie] = useState<Movie | null>(null);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
   const [showModal, setShowModal] = useRecoilState(modalState);
-
-  function truncate(str: String, n: number) {
-    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
-  }
 
   useEffect(() => {
     setMovie(
@@ -37,7 +37,7 @@ const Banner = ({ netflixOriginals }: Props) => {
         <div className="absolute bottom-0 left-0 h-[100px] w-full bg-gradient-to-t from-gray-900 to-[#010511]/2"></div>
       </div>
 
-      <h1 className="text-2xl font-bold md:text-3xl lg:text-6xl">
+      <h1 className="text-2xl w-3/4 font-bold md:text-3xl lg:text-6xl">
         {movie?.title || movie?.name || movie?.original_name}
       </h1>
       <p className="max-w-xs text-xs text-shadow-md md:max-w-lg md:text-lg lg:max-w-2xl lg:text-xl">

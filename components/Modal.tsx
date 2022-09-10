@@ -24,14 +24,20 @@ import ReactPlayer from "react-player/lazy";
 import { FaPlay } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
+import { truncate } from "./Banner";
 
-const Modal = () => {
+interface Props {
+  isTV?: Boolean;
+}
+
+const Modal = ({ isTV }: Props) => {
   const [movie, setMovie] = useRecoilState(movieState);
   const [trailer, setTrailer] = useState("");
   const [showModal, setShowModal] = useRecoilState(modalState);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true);
   const [genres, setGenres] = useState<Genre[]>([]);
   const [addedToList, setAddedToList] = useState(false);
+  const [readMore, setReadMore] = useState(false);
   const { user } = useAuth();
   const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
 
@@ -49,13 +55,15 @@ const Modal = () => {
     if (!movie) return;
 
     async function fetchMovie() {
+      console.log(movie);
       const data = await fetch(
         `https://api.themoviedb.org/3/${
-          movie?.media_type === "tv" ? "tv" : "movie"
+          movie?.first_air_date ? "tv" : "movie"
         }/${movie?.id}?api_key=${
           process.env.NEXT_PUBLIC_API_KEY
         }&language=en-US&append_to_response=videos`
       ).then((response) => response.json());
+      // console.log(movie);
       if (data?.videos) {
         const index = data.videos.results.findIndex(
           (element: Element) => element.type === "Trailer"
@@ -77,7 +85,7 @@ const Modal = () => {
         collection(db, "customers", user.uid, "myList"),
         (snapshot) => {
           setMovies(snapshot.docs);
-          console.log(snapshot);
+          // console.log(snapshot);
         }
       );
     }
@@ -146,26 +154,26 @@ const Modal = () => {
           />
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
-              <button className="flex items-center gap-x-2 rounded bg-white px-8 text-xl font-bold text-black transition hover:bg-[#e6e6e6]">
-                <FaPlay className="h-7 w-7 text-black" />
+              <button className="flex items-center gap-x-2 rounded bg-white px-4 md:px-8 text-sm md:text-xl font-bold text-black transition hover:bg-[#e6e6e6]">
+                <FaPlay className="h-4 w-4 md:h-7 md:w-7 text-black" />
                 Play
               </button>
               <button className="modalButton" onClick={handleList}>
                 {addedToList ? (
-                  <CheckIcon className="h-7 w-7" />
+                  <CheckIcon className="h-4 w-4 md:h-7 md:w-7 " />
                 ) : (
-                  <PlusIcon className="h-7 w-7" />
+                  <PlusIcon className="h-4 w-4 md:h-7 md:w-7 " />
                 )}
               </button>
               <button className="modalButton">
-                <ThumbUpIcon className="h-6 w-6" />
+                <ThumbUpIcon className="h-4 w-4 md:h-6 md:w-6 " />
               </button>
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
               {muted ? (
-                <VolumeOffIcon className="h-6 w-6" />
+                <VolumeOffIcon className="h-4 w-4 md:h-6 md:w-6" />
               ) : (
-                <VolumeUpIcon className="h-6 w-6" />
+                <VolumeUpIcon className="h-4 w-4 md:h-6 md:w-6" />
               )}
             </button>
           </div>
@@ -183,8 +191,20 @@ const Modal = () => {
                 HD
               </div>
             </div>
-            <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
-              <p className="w-5/6">{movie?.overview}</p>
+            <div className="flex gap-x-10 gap-y-4 font-light md:flex-row">
+              <p className="text-sm md:text-base">
+                {readMore ? movie?.overview : truncate(movie?.overview!, 150)}{" "}
+                <a
+                  onClick={() => setReadMore(!readMore)}
+                  style={{
+                    color: "gray",
+                    fontWeight: "bold",
+                    cursor: "pointer",
+                  }}
+                >
+                  {readMore ? "Read Less" : "Read More"}
+                </a>
+              </p>
               <div className="flex flex-col space-y-3 text-sm">
                 <div>
                   <span className="text-[gray]">Genres:</span>{" "}
