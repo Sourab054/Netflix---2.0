@@ -59,7 +59,7 @@ const Modal = () => {
           process.env.NEXT_PUBLIC_API_KEY
         }&language=en-US&append_to_response=videos`
       ).then((response) => response.json());
-      // console.log(movie);
+      console.log(data);
       if (data?.videos) {
         const index = data.videos.results.findIndex(
           (element: Element) => element.type === "Trailer"
@@ -73,6 +73,7 @@ const Modal = () => {
 
     fetchMovie();
   }, [movie]);
+  console.log(trailer);
 
   // Find all the movies in the user's list
   useEffect(() => {

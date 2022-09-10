@@ -26,7 +26,6 @@ const Thumbnail = ({ movie }: Props) => {
               if (router.pathname !== "/search") {
                 setCurrentMovie(movie);
                 setShowModal(true);
-                console.log(currentMovie);
               }
             }}
           >

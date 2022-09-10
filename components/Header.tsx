@@ -73,9 +73,39 @@ function Header() {
                 Home
               </li>
             </Link>
-            <li className="headerLink">TV Shows</li>
-            <li className="headerLink">Movies</li>
-            <li className="headerLink">New & Popular</li>
+            <Link href="/tv">
+              <li
+                className={
+                  router.pathname == "/tv"
+                    ? "headerLink cursor-default font-semibold text-white hover:text-white"
+                    : "headerLink"
+                }
+              >
+                TV Shows
+              </li>
+            </Link>
+            <Link href="/movie">
+              <li
+                className={
+                  router.pathname == "/movie"
+                    ? "headerLink cursor-default font-semibold text-white hover:text-white"
+                    : "headerLink"
+                }
+              >
+                Movies
+              </li>
+            </Link>
+            <Link href="/new&popular">
+              <li
+                className={
+                  router.pathname == "/new&popular"
+                    ? "headerLink cursor-default font-semibold text-white hover:text-white"
+                    : "headerLink"
+                }
+              >
+                New & Popular
+              </li>
+            </Link>
             <Link href="/my-list">
               <li
                 className={

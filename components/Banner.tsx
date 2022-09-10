@@ -8,23 +8,21 @@ import { useRecoilState } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtom";
 
 interface Props {
-  netflixOriginals: Movie[];
+  movieBanner: Movie[];
 }
 
 export function truncate(str: String, n: number) {
   return str?.length > n ? str.substr(0, n - 1) + "..." : str;
 }
 
-const Banner = ({ netflixOriginals }: Props) => {
+const Banner = ({ movieBanner }: Props) => {
   const [movie, setMovie] = useState<Movie | null>(null);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
   const [showModal, setShowModal] = useRecoilState(modalState);
 
   useEffect(() => {
-    setMovie(
-      netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
-    );
-  }, [netflixOriginals]);
+    setMovie(movieBanner[Math.floor(Math.random() * movieBanner.length)]);
+  }, [movieBanner]);
 
   return (
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[70vh] lg:justify-end lg:pb-6">
