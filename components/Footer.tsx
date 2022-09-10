@@ -91,8 +91,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="text-sm text-center text-gray-300 bg-gray-800 font-semibold py-1 bg-gray sm:text-center">
-        Made with ❤️ by Sourab Patil
+      <div className="text-sm text-center text-gray-300 bg-gray-800 py-1 bg-gray sm:text-center">
+        Made with ❤️ by <span className="font-semibold">Sourab Patil</span>.
       </div>
     </footer>
   );
