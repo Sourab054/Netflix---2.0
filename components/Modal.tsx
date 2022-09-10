@@ -26,11 +26,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { db } from "../firebase";
 import { truncate } from "./Banner";
 
-interface Props {
-  isTV?: Boolean;
-}
-
-const Modal = ({ isTV }: Props) => {
+const Modal = () => {
   const [movie, setMovie] = useRecoilState(movieState);
   const [trailer, setTrailer] = useState("");
   const [showModal, setShowModal] = useRecoilState(modalState);

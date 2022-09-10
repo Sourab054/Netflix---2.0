@@ -1,5 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { DetailedHTMLProps, HTMLAttributes, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -20,9 +21,13 @@ const search = ({ results }: Props) => {
   // console.log(results);
 
   return (
-    <div className="relative bg-gradient-to-b from-gray-900/10 to-[#010511] h-screen ">
+    <div className="relative bg-gradient-to-b from-gray-900/10 to-[#010511] flex flex-col min-h-screen">
+      <Head>
+        <title>Netflix</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header />
-      <main className="pt-28 pl-4 lg:pl-16 h-full">
+      <main className="pt-28 pl-4 lg:pl-16 h-full flex-1">
         <h2 className="cursor-pointer pb-3 text-sm font-semibold text-gray-400 transition duration-200 md:text-xl">
           Search results for :{" "}
           <span className="text-white capitalize pl-2">{query.q}</span>

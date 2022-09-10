@@ -46,7 +46,7 @@ function Header() {
         className={`${
           isScrolled
             ? "bg-gradient-to-b from-gray-900 to-[#010511]"
-            : "bg-gradient-to-b from-[#141414] "
+            : "bg-gradient-to-b from-gray-900 "
         }`}
       >
         <div className="flex items-center space-x-2 md:space-x-10">
