@@ -9,6 +9,7 @@ import {
 import { useRouter } from "next/router";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { auth } from "../firebase";
+import toast, { Toaster } from "react-hot-toast";
 
 interface IAuth {
   user: User | null;
@@ -31,6 +32,16 @@ const AuthContext = createContext<IAuth>({
 interface AuthProviderProps {
   children: React.ReactNode;
 }
+
+const toastStyle = {
+  background: "white",
+  color: "black",
+  fontWeight: "bold",
+  fontSize: "16px",
+  padding: "15px",
+  borderRadius: "9999px",
+  maxWidth: "1000px",
+};
 
 export const Auth = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
@@ -64,6 +75,10 @@ export const Auth = ({ children }: AuthProviderProps) => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCreds) => {
         setUser(userCreds.user);
+        toast.success(`Signed up successfully.`, {
+          duration: 5000,
+          style: toastStyle,
+        });
         setLoading(false);
         router.push("/");
       })
@@ -77,6 +92,10 @@ export const Auth = ({ children }: AuthProviderProps) => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCreds) => {
         setUser(userCreds.user);
+        toast.success(`Logged in successfully.`, {
+          duration: 5000,
+          style: toastStyle,
+        });
         setLoading(false);
         router.push("/");
       })
@@ -89,6 +108,10 @@ export const Auth = ({ children }: AuthProviderProps) => {
     signOut(auth)
       .then(() => {
         setUser(null);
+        toast.success(`Logged out successfully.`, {
+          duration: 5000,
+          style: toastStyle,
+        });
       })
       .catch((error) => alert(error.message))
       .finally(() => setLoading(false));
