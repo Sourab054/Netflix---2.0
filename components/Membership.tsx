@@ -55,7 +55,11 @@ function Membership() {
               {subscription?.cancel_at_period_end
                 ? "Your membership will end on "
                 : "Your next billing date is "}
-              {subscription?.current_period_end}
+              {new Date(subscription?.current_period_end!)
+                .toDateString()
+                .split(" ")
+                .splice(1)
+                .join(" ")}
             </p>
           </div>
           <div className="md:text-right">

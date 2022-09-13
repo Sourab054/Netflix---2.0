@@ -51,6 +51,7 @@ const Login = () => {
           <label className="inline-block w-full">
             <input
               type="email"
+              defaultValue="guest@gmail.com"
               placeholder="Email"
               className={`input`}
               {...register("email", { required: true })}
@@ -65,6 +66,7 @@ const Login = () => {
             <input
               type="password"
               placeholder="Password"
+              defaultValue="123456"
               className={`input `}
               {...register("password", { required: true })}
             />
@@ -75,13 +77,22 @@ const Login = () => {
             )}
           </label>
         </div>
-        <button
-          className="w-full rounded bg-[#E50914] py-3 font-semibold"
-          type="submit"
-          onClick={() => setLogin(true)}
-        >
-          Sign In
-        </button>
+        <div className="space-y-4">
+          <button
+            className="w-full rounded bg-white text-gray-900 py-3 mb-0 font-semibold"
+            type="submit"
+            onClick={() => setLogin(true)}
+          >
+            Login as Guest
+          </button>
+          <button
+            className="w-full rounded bg-[#E50914] py-3 font-semibold"
+            type="submit"
+            onClick={() => setLogin(true)}
+          >
+            Sign In
+          </button>
+        </div>
         <div className="text-[gray]">
           New to Netflix?{" "}
           <button

@@ -20,7 +20,7 @@ function Account({ products }: Props) {
 
   if (loading) return null;
 
-  console.log(subscription);
+  // console.log(new Date(subscription?.created!).toDateString());
   return (
     <div className="">
       <Head>
@@ -50,7 +50,12 @@ function Account({ products }: Props) {
           <div className="-ml-0.5 flex items-center gap-x-1.5">
             <img src="https://rb.gy/4vfk4r" alt="" className="h-7 w-7" />
             <p className="text-xs font-semibold text-[#555]">
-              Member since {subscription?.created}
+              Member Since{" "}
+              {new Date(subscription?.created!)
+                .toDateString()
+                .split(" ")
+                .splice(1)
+                .join(" ")}
             </p>
           </div>
         </div>
