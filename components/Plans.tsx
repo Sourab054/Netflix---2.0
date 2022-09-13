@@ -33,7 +33,7 @@ function Plans({ products }: Props) {
         <title>Netflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="border-b border-white/10 bg-[#141414]">
+      <header className="border-b border-white/10 bg-[#010511] z-10">
         <Link href="/">
           <img
             src="https://rb.gy/ulxxee"
