@@ -7,7 +7,6 @@ interface Props {
 }
 
 function Table({ products, selectedPlan }: Props) {
-  //   console.log(products);
   return (
     <table>
       <tbody className="divide-y divide-[gray]">

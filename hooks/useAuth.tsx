@@ -54,11 +54,9 @@ export const Auth = ({ children }: AuthProviderProps) => {
     () =>
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          // Logged in...
           setUser(user);
           setLoading(false);
         } else {
-          // Not logged in...
           setUser(null);
           setLoading(true);
           router.push("/login");

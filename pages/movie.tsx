@@ -22,7 +22,6 @@ interface Props {
   movieDocumentary: Movie[];
   movieIndia: Movie[];
   movieNowPlaying: Movie[];
-  //   movieUS: Movie[];
   moviePopular: Movie[];
 }
 
@@ -36,7 +35,6 @@ const MoviePage = ({
   movieDocumentary,
   movieIndia,
   movieNowPlaying,
-  //   movieUS,
   moviePopular,
 }: Props) => {
   const { user, loading } = useAuth();
@@ -71,7 +69,6 @@ const MoviePage = ({
           <Row title="Trending Now" movies={trendingMovie} />
           <Row title="Now Playing" movies={movieNowPlaying} />
           <Row title="Desi & Chill" movies={movieIndia} />
-          {/* <Row title="Hollywood Movies" movies={movieUS} /> */}
           <Row title="Comedies" movies={movieComedies} />
           <Row title="Horror" movies={movieHorror} />
           <Row title="Top Rated" movies={movieTopRated} />
@@ -99,7 +96,6 @@ export const getServerSideProps = async () => {
     movieDocumentary,
     movieIndia,
     movieNowPlaying,
-    // movieUS,
     moviePopular,
   ] = await Promise.all([
     fetch(requests.fetchTrendingMovie).then((res) => res.json()),
@@ -110,7 +106,6 @@ export const getServerSideProps = async () => {
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
     fetch(requests.fetchIndianMovies).then((res) => res.json()),
-    // fetch(requests.fetchUSMovies).then((res) => res.json()),
     fetch(requests.fetchNowPlaying).then((res) => res.json()),
     fetch(requests.fetchMoviePopular).then((res) => res.json()),
   ]);
@@ -126,7 +121,6 @@ export const getServerSideProps = async () => {
       movieDocumentary: movieDocumentary.results,
       movieIndia: movieIndia.results,
       movieNowPlaying: movieNowPlaying.results,
-      //   movieUS: movieUS.results,
       moviePopular: moviePopular.results,
     },
   };

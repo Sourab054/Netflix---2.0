@@ -15,7 +15,6 @@ function Header() {
 
   const handleSubmit = async (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
-    // console.log(searchState);
     await router.push(`/search?q=${searchText}`);
     setSearchText("");
   };

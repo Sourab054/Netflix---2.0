@@ -52,12 +52,10 @@ const NewPopularPage = ({
         <Banner movieBanner={popularMovie || popularTV} />
 
         <section className="md:space-y-24">
-          {/* My List */}
           {list.length > 0 && <Row title="My List" movies={list} />}
           <Row title="Popular on TV" movies={popularTV} />
           <Row title="Popular on Netflix" movies={popularMovie} />
           <Row title="Coming Next Week" movies={upcomingTV} />
-          {/* <Row title="Hollywood Movies" movies={movieUS} /> */}
           <Row title="Coming This Week" movies={upcomingMovie} />
         </section>
       </main>

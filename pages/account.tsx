@@ -21,7 +21,6 @@ function Account({ products }: Props) {
 
   if (loading) return null;
 
-  // console.log(new Date(subscription?.created!).toDateString());
   return (
     <div className="">
       <Head>
@@ -68,7 +67,6 @@ function Account({ products }: Props) {
           <h4 className="text-lg text-[gray] uppercase tracking-wide">
             Plan Details
           </h4>
-          {/* Find the current plan */}
           <div className="col-span-2 font-medium">
             {
               products.filter(

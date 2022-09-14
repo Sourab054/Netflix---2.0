@@ -18,8 +18,6 @@ const search = ({ results }: Props) => {
   const searchText = useRecoilValue(searchState);
   const { query } = useRouter();
 
-  // console.log(results);
-
   return (
     <div className="relative bg-gradient-to-b from-gray-900/10 to-[#010511] flex flex-col min-h-screen">
       <Head>
@@ -46,7 +44,6 @@ const search = ({ results }: Props) => {
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const query = context.query.q;
-  // Fetch data from external API
   const res = await fetch(
     `https://api.themoviedb.org/3/search/multi?api_key=03ec3fd413048c3fb576aaff2447f3dd&language=en-US&query=${query}&page=1&include_adult=false`
   );
@@ -54,7 +51,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   console.log(results);
 
-  // Pass data to the page via props
   return { props: { results } };
 }
 
