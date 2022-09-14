@@ -36,7 +36,7 @@ const MyList = () => {
           My List
         </h2>
         {list.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-[calc(100vh-55vh)]">
+          <div className="flex flex-col items-center justify-center h-[45vh]">
             <h3 className="text-gray-400 text-sm md:text-base p-1">
               You haven't added any titles to your list yet.
             </h3>

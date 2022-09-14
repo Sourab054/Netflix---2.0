@@ -120,7 +120,7 @@ function Header() {
         </div>
         <div className="flex items-center space-x-4 text-sm font-light">
           {search ? (
-            <div className="p-1 flex items-center justify-center bg-black border-[1.6px] border-white transition-all">
+            <div className="p-1 flex items-center justify-center bg-black border-1 border-white transition-all">
               <SearchIcon
                 className="sm hidden h-5 w-5 mr-2 cursor-pointer sm:inline"
                 onClick={() => setSearch(!search)}

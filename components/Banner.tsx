@@ -39,7 +39,6 @@ const Banner = ({ movieBanner }: Props) => {
         {movie?.title || movie?.name || movie?.original_name}
       </h1>
       <p className="max-w-xs text-xs text-shadow-md md:max-w-lg md:text-lg lg:max-w-2xl lg:text-xl">
-        {/* {movie?.overview, 220} */}
         {truncate(movie?.overview!, 220)}
       </p>
       <div className="flex space-x-3">

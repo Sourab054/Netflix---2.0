@@ -77,7 +77,6 @@ const Home = ({
         <Banner movieBanner={netflixOriginals} />
 
         <section className="md:space-y-24">
-          {/* My List */}
           {list.length > 0 && <Row title="My List" movies={list} />}
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="TV Comedies" movies={tvComedies} />
