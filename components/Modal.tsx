@@ -163,7 +163,7 @@ const Modal = () => {
                 )}
               </button>
               <button className="modalButton">
-                <ThumbUpIcon className="h-4 w-4 md:h-6 md:w-6 " />
+                <ThumbUpIcon className="h-4 w-4 md:h-7 md:w-7" />
               </button>
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
